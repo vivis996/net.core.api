@@ -7,8 +7,8 @@ using net.core.api.Data;
 namespace net.core.api.Migrations
 {
   [DbContext(typeof(DataContext))]
-  [Migration("20210809160838_Initial")]
-  partial class Initial
+  [Migration("20210809170953_FinalSeeding")]
+  partial class FinalSeeding
   {
     protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
@@ -61,7 +61,7 @@ namespace net.core.api.Migrations
             b.Property<int>("Strength")
                       .HasColumnType("INTEGER");
 
-            b.Property<int?>("UserId")
+            b.Property<int>("UserId")
                       .HasColumnType("INTEGER");
 
             b.Property<int>("Victories")
@@ -72,6 +72,36 @@ namespace net.core.api.Migrations
             b.HasIndex("UserId");
 
             b.ToTable("Characters");
+
+            b.HasData(
+                      new
+                  {
+                    Id = 1,
+                    Class = 0,
+                    Defeats = 0,
+                    Defense = 120,
+                    Fights = 0,
+                    HitPoints = 1250,
+                    Intelligence = 125,
+                    Name = "Obi wan",
+                    Strength = 90,
+                    UserId = 1,
+                    Victories = 0
+                  },
+                      new
+                  {
+                    Id = 2,
+                    Class = 1,
+                    Defeats = 0,
+                    Defense = 100,
+                    Fights = 0,
+                    HitPoints = 1100,
+                    Intelligence = 112,
+                    Name = "Darth Vader",
+                    Strength = 110,
+                    UserId = 2,
+                    Victories = 0
+                  });
           });
 
       modelBuilder.Entity("net.core.api.Models.Skill", b =>
@@ -135,6 +165,22 @@ namespace net.core.api.Migrations
             b.HasKey("Id");
 
             b.ToTable("Users");
+
+            b.HasData(
+                      new
+                  {
+                    Id = 1,
+                    PasswordHash = new byte[] { 54, 0, 226, 182, 224, 42, 83, 174, 112, 24, 213, 234, 142, 28, 100, 154, 55, 247, 19, 218, 203, 250, 100, 69, 223, 176, 180, 195, 183, 32, 232, 219, 51, 163, 57, 6, 227, 3, 187, 214, 220, 76, 218, 185, 120, 31, 180, 57, 130, 212, 199, 123, 73, 155, 163, 238, 241, 129, 176, 160, 158, 30, 149, 98 },
+                    PasswordSalt = new byte[] { 100, 11, 88, 176, 142, 103, 22, 142, 148, 164, 53, 246, 193, 134, 37, 20, 125, 51, 11, 127, 215, 6, 16, 128, 121, 180, 209, 17, 68, 114, 203, 99, 146, 86, 94, 148, 131, 135, 226, 102, 209, 83, 205, 119, 218, 214, 212, 50, 224, 12, 164, 152, 134, 250, 135, 238, 183, 249, 41, 168, 151, 100, 82, 177, 196, 132, 45, 2, 31, 118, 206, 199, 141, 183, 180, 72, 163, 45, 73, 178, 182, 248, 228, 225, 112, 142, 50, 67, 28, 126, 61, 219, 141, 232, 178, 7, 68, 124, 148, 150, 16, 139, 168, 40, 5, 89, 185, 80, 249, 87, 68, 202, 102, 210, 198, 96, 252, 76, 84, 169, 103, 243, 175, 242, 174, 160, 40, 105 },
+                    Username = "User1"
+                  },
+                      new
+                  {
+                    Id = 2,
+                    PasswordHash = new byte[] { 54, 0, 226, 182, 224, 42, 83, 174, 112, 24, 213, 234, 142, 28, 100, 154, 55, 247, 19, 218, 203, 250, 100, 69, 223, 176, 180, 195, 183, 32, 232, 219, 51, 163, 57, 6, 227, 3, 187, 214, 220, 76, 218, 185, 120, 31, 180, 57, 130, 212, 199, 123, 73, 155, 163, 238, 241, 129, 176, 160, 158, 30, 149, 98 },
+                    PasswordSalt = new byte[] { 100, 11, 88, 176, 142, 103, 22, 142, 148, 164, 53, 246, 193, 134, 37, 20, 125, 51, 11, 127, 215, 6, 16, 128, 121, 180, 209, 17, 68, 114, 203, 99, 146, 86, 94, 148, 131, 135, 226, 102, 209, 83, 205, 119, 218, 214, 212, 50, 224, 12, 164, 152, 134, 250, 135, 238, 183, 249, 41, 168, 151, 100, 82, 177, 196, 132, 45, 2, 31, 118, 206, 199, 141, 183, 180, 72, 163, 45, 73, 178, 182, 248, 228, 225, 112, 142, 50, 67, 28, 126, 61, 219, 141, 232, 178, 7, 68, 124, 148, 150, 16, 139, 168, 40, 5, 89, 185, 80, 249, 87, 68, 202, 102, 210, 198, 96, 252, 76, 84, 169, 103, 243, 175, 242, 174, 160, 40, 105 },
+                    Username = "User2"
+                  });
           });
 
       modelBuilder.Entity("net.core.api.Models.Weapon", b =>
@@ -158,6 +204,22 @@ namespace net.core.api.Migrations
                       .IsUnique();
 
             b.ToTable("Weapons");
+
+            b.HasData(
+                      new
+                  {
+                    Id = 1,
+                    CharacterId = 1,
+                    Damage = 105,
+                    Name = "Dark Saber"
+                  },
+                      new
+                  {
+                    Id = 2,
+                    CharacterId = 2,
+                    Damage = 100,
+                    Name = "Red lightsaber"
+                  });
           });
 
       modelBuilder.Entity("CharacterSkill", b =>
@@ -179,7 +241,9 @@ namespace net.core.api.Migrations
           {
             b.HasOne("net.core.api.Models.User", "User")
                       .WithMany("Characters")
-                      .HasForeignKey("UserId");
+                      .HasForeignKey("UserId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
 
             b.Navigation("User");
           });

@@ -14,7 +14,14 @@
       "username": "MyLocalTest",
       "password": "Ab12345678",
       "database": "dotnet-course-api"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:net.core.api}/dotnet-course-api",
+      "name": "Local Dotnet-Course-Api"
     }
   ],
-  "jupyter.jupyterServerType": "local"
+  "jupyter.jupyterServerType": "local",
+  "sqltools.useNodeRuntime": true
 }
